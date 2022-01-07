@@ -25,31 +25,32 @@ function reducer(todos,action){
    switch(action.type){
      case ACTIONS.ADD:{
       const name=action.payload.ref.current.value
-      if(name=='') return
+      if(name==='') return
       const newTodos=[...todos,{id: uuidv4(), index: todos.length+1, name: name, complete: false}]
       action.payload.ref.current.value=null
       return newTodos
      }
      case ACTIONS.DELETE:{
       const newTodos=[...todos]
-      const todo=newTodos.find(todo => todo.id === action.payload)
+      const todo=newTodos.find(todo => todo.id === action.payload)//in this, payload is id
+      //in payload, we can pass directly the variable(payload: id) or a sequence of variable(payload:{id:id,name:name})
       newTodos.splice(newTodos.indexOf(todo),1)
       return editindex(newTodos)
      }  
      case ACTIONS.TOGGLE:{
-      const newTodos = [...todos]//...todos means create a copy of todos
-      const todo = newTodos.find(todo => todo.id === action.payload)//find todo element that have id to equal the input
+      const newTodos = [...todos]
+      const todo = newTodos.find(todo => todo.id === action.payload)
       todo.complete = !todo.complete
       return newTodos
      }
      case ACTIONS.CHANGE:{
-      const newTodos = [...todos]//...todos means create a copy of todos
-      const todo = newTodos.find(todo => todo.id === action.payload.id)//find todo element that have id to equal the input
+      const newTodos = [...todos]
+      const todo = newTodos.find(todo => todo.id === action.payload.id)
       todo.name=action.payload.name
       return newTodos
      }
      case ACTIONS.CLEAR:{
-      const newTodos = todos.filter(todo => !todo.complete)//filter todo element that have not complete
+      const newTodos = todos.filter(todo => !todo.complete)
       return editindex(newTodos)
      }
      case ACTIONS.UPDATE:
@@ -80,47 +81,6 @@ function App() {
     }
     else notesElm.innerHTML=``
   }, [todos])// whenever this array change, we call function and store to the localStorage after changing to string
-  
-  
-  //For change the status complete of a note
-  // function toggleTodo(id) {
-  //   const newTodos = [...todos]//...todos means create a copy of todos
-  //   const todo = newTodos.find(todo => todo.id === id)//find todo element that have id to equal the input
-  //   todo.complete = !todo.complete
-  //   setTodos(newTodos)
-  // }
-  
-  //For delete a note
-  // function deleteTodo(id){
-  //   const newTodos = [...todos]
-  //   const todo = newTodos.find(todo => todo.id === id)
-  //   newTodos.splice(newTodos.indexOf(todo),1)
-  //   editindex(newTodos)
-  // }
-  
-  //For change name of a note
-  // function changeName(id,name){
-  //   const todo = todos.find(todo => todo.id === id)
-  //   const newnote={id:todo.id,index:todo.index,name:name,complete:todo.complete}
-  //   const newTodos=[...todos.splice(0,todos.indexOf(todo)),newnote,...todos.splice(todos.indexOf(todo)+1)]
-  //   editindex(newTodos)
-  // }
-  
-  //For add a note
-  // function handleAddTodo() {
-  //   const name = todoNameRef.current.value
-  //   if (name === '') return
-  //   setTodos(prevTodos => {
-  //     return [...prevTodos, { id: uuidv4(), index: todos.length+1, name: name, complete: false}]
-  //   })
-  //   todoNameRef.current.value = null
-  // }
-  
-  //For clear all the note that completed
-  // function handleClearTodos() {
-  //   const newTodos = todos.filter(todo => !todo.complete)//filter todo element that have not complete
-  //   editindex(newTodos)
-  // }
 
   return (
     <> 
@@ -138,14 +98,14 @@ function App() {
 				<div className="form-group">
 					<textarea ref={todoNameRef} className="form-control" id="addTxt" rows="3"></textarea>
 				</div>
-				<button onClick={() => dispatch({type:'add',payload:{ref:todoNameRef}})} className="btn btn-primary" id="addBtn" style={{backgroundColor:'green'}}>
+				<button onClick={() => dispatch({type:ACTIONS.ADD,payload:{ref:todoNameRef}})} className="btn btn-primary" id="addBtn" style={{backgroundColor:'green'}}>
 					Add Note
 				</button>
 			  </div>
 		  </div>
 		  <hr/>
 		  <h1>Your Notes</h1>
-      <button onClick={() => dispatch({type:'clear'})} className="btn btn-primary" style={{backgroundColor:'red',marginLeft:'20px'}}>
+      <button onClick={() => dispatch({type:ACTIONS.CLEAR})} className="btn btn-primary" style={{backgroundColor:'red',marginLeft:'20px'}}>
 					Clear complete
 				</button>
 		  <hr/>
@@ -153,9 +113,7 @@ function App() {
       >{todos.filter(todo => !todo.complete).length} left to do</div>
       <div id='mess'></div>
 		  <div id="notes" className="row container-fluid">
-      <TodoList todos={todos} dispatch={dispatch}
-      //toggleTodo={toggleTodo} deleteTodo={deleteTodo} changeName={changeName}
-      /> 
+      <TodoList todos={todos} dispatch={dispatch}/> 
       </div>
 	  </div>
     </>
