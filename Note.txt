@@ -1,0 +1,20 @@
+Basic Hooks: 
+ + useState: initialize a state variable and a function to set the state of that variable
+ + useEffect: whenever have change of the parameter we pass, call the function we write
+ + useContext: passing the value to children component with provider/consumer-->useContext
+Additional Hooks:
+useReducer, useCallback, useMemo, useRef, useImperativeHandle, useLayoutEffect,useDebugValue
+ + useRef: biến sẽ giữ mà ko gây lần render thay vi nếu dùng useState sẽ render render loop
+   (current:...--->current.value)
+   có thể truy cập DOM element và lấy giá trị nó ra
+   có thể lưu trữ giá trị trc của 1 state variable
+Link article:https://blog.webdevsimplified.com/2020-05/use-ref/
+ + useMemo: syntax khá giống với useEffect, cũng là khi array of dependecies thay đổi thì sẽ gọi hàm tính toán
+   Dùng 2 TH: 
+    1 là để tránh render lại những hàm phức tạp thường làm chậm, ta chỉ cần bọc nó vào useMemo để khi array thay đổi
+thì chạy hàm
+    2 là referential equality (thường có mẳ useEffect)--> trả về kết quả của hàm truyền vào nó
+ + useCallback: tương tự useMemo trong TH refential equality nhưng mà trả về 1 hàm mới.
+Redux:
+đọc redux,redux-toolkit
+

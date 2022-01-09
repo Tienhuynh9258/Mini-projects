@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect,useReducer } from 'react';
 import TodoList from './TodoList'
+import "react-toastify/dist/ReactToastify.css";
 import uuidv4 from 'uuid/v4'
 
 export const ACTIONS={
