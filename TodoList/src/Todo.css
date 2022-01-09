@@ -1,0 +1,21 @@
+.upparrow {
+    
+    width: 0px;
+    height: 0px;
+    border-top: none;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid black;
+    float:right;
+ }
+ 
+ .downarrow {
+    width: 0px;
+    height: 0px;
+    border-top: 10px solid black;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: none;
+    float:right;
+    margin-left: 5px;
+ }
