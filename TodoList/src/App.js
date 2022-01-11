@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect,useReducer } from 'react';
 import TodoList from './TodoList'
-import "react-toastify/dist/ReactToastify.css";
+//import "react-toastify/dist/ReactToastify.css";
 import uuidv4 from 'uuid/v4'
 
 export const ACTIONS={
@@ -99,7 +99,7 @@ function App() {
   }, [])// this useEffect use for after refreshing the page, after having the change in this empty array and use function, and because
   //it can't change so we always get from the beginning
 
-  useEffect(() => {
+  useEffect(() => {  
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))
     let notesElm = document.getElementById("mess");
     if(todos.length<=0) {

@@ -1,0 +1,15 @@
+TodoList: 
+ Features: 
+  + add Notes :DONE
+  + delete Notes: DONE
+  + press checkbox:DONE
+  + Clear Notes that have checked:DONE
+  + Show number of notes that still uncomplete(not have checked):DONE
+  + Can edit name of note: DONE
+  + Have up down icon to change the order of notes: DONE
+  + Delete having a modal to confirm: DONE
+  + Make spinner when add notes: DONE
+  + Allow to choose all notes: DONE
+  + Add the start-end date
+  + Notify add success
+  + (Bonus)-->create Account

@@ -3,8 +3,8 @@ body {
   font-family: 'Open Sans', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #efefef !important;
-  padding: 40px 0;
+  /* background-color: #efefef !important; */
+  /* padding: 40px 0; */
 }
 
 code {

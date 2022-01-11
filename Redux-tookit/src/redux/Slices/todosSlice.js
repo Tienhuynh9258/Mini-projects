@@ -21,9 +21,12 @@
 // };
 
 // export default todoListReducer;
-
+//import React,{useEffect} from 'react';
 import { createSlice } from '@reduxjs/toolkit';
-
+// const LOCAL_STORAGE_KEY = 'todoApp.todos';
+// useEffect(() => {
+//   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify((state) => state.todoList))
+// }, [(state) => state.todoList])
 export default createSlice({
   name: 'todoList',
   initialState: [
@@ -31,6 +34,7 @@ export default createSlice({
     { id: 2, name: 'Learn Redux', completed: true, priority: 'High' },
     { id: 3, name: 'Learn JavaScript', completed: false, priority: 'Low' },
   ],
+  
   reducers: { // IMMER
     addTodo: (state, action) => {
       state.push(action.payload);
