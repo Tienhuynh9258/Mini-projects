@@ -6,7 +6,7 @@ function editindex(Todos){
   )
   return newTodos
 }
-export default createSlice({
+export const todoListSlice= createSlice({
   name: 'todoList',
   initialState:{
       todos:[]
@@ -64,3 +64,6 @@ export default createSlice({
     }
 }
 });
+
+export const todoListActions=todoListSlice.actions;
+export default todoListSlice.reducer;

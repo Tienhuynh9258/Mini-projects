@@ -1,24 +1,24 @@
 import React, { useState, useRef, useEffect } from 'react';
 import TodoList from '../components/TodoList'
 import {useSelector, useDispatch} from 'react-redux'
-import todoListSlice from '../redux/Slices/todoListSlice';
-
+import {todoListActions} from '../redux/Slices/todoListSlice';
+import { Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 //import "react-toastify/dist/ReactToastify.css";
-
+import 'antd/dist/antd.css'
 
 const LOCAL_STORAGE_KEY = 'todoApp.todos'// choose keyword no matter you want
 
 
 function HomePage() {
   const {todos}= useSelector((state) => state.todoList)
-  console.log(todos);
   const dispatch = useDispatch()
   const [tick,setTick]=useState(false)
   const todoNameRef = useRef()// initialize a avariable that can reference to the input
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
     //we get from localStorage and change from string to array
-    if (storedTodos) dispatch(todoListSlice.actions.updateNotes(storedTodos))
+    if (storedTodos) dispatch(todoListActions.updateNotes(storedTodos))
     //setTodos(storedTodos)
   }, [])
 
@@ -44,20 +44,21 @@ function HomePage() {
   </button>`
     setTimeout(()=> { addButton.innerHTML= `Add note`},2000)
     setTimeout(() => {loaded1.innerHTML=``},2000)
-    setTimeout(() =>dispatch(todoListSlice.actions.addNote({ref:todoNameRef})),2000)
+    setTimeout(() =>dispatch(todoListActions.addNote({ref:todoNameRef})),2000)
   }
   function Tick(){
     setTick(!tick)
-    dispatch(todoListSlice.actions.chooseAllNotes({tick:!tick})) 
+    dispatch(todoListActions.chooseAllNotes({tick:!tick})) 
   }
   return (
     <> 
       <nav className="navbar navbar-expand-lg navbar-light bg-success">
 		     <div className="navbar-brand">
-			   <p style={{Fontsize:'30px'}}>THE NOTES TAKER</p>
+			   <p>THE NOTES TAKER</p>
+         
       	 </div>
 	    </nav>
-
+      <Avatar size="large" icon={<UserOutlined />} style={{float:'right', margin:'10px'}}/>
 	  <div className="container my-3">
 		  <h1>Take your Notes here</h1>
 		  <div className="card">
@@ -76,7 +77,7 @@ function HomePage() {
       <button onClick={() => Tick()} className="btn btn-default" style={{backgroundColor: 'lightgray',marginLeft:'20px'}}>
 					Choose all
 			</button>
-      <button onClick={() => dispatch(todoListSlice.actions.clearNotes())} className="btn btn-primary" style={{backgroundColor:'red',marginLeft:'20px'}}>
+      <button onClick={() => dispatch(todoListActions.clearNotes())} className="btn btn-primary" style={{backgroundColor:'red',marginLeft:'20px'}}>
 					Clear complete
 			</button>
 		  <hr/>

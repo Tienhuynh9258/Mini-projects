@@ -15,8 +15,19 @@ Link article:https://blog.webdevsimplified.com/2020-05/use-ref/
 thì chạy hàm
     2 là referential equality (thường có mẳ useEffect)--> trả về kết quả của hàm truyền vào nó
  + useCallback: tương tự useMemo trong TH refential equality nhưng mà trả về 1 hàm mới.
+ + useReducer: kết hợp với dispatch-->gọi tương tự hành động trong redux
 Redux:
 đọc redux,redux-toolkit
 
-useHistory;extraReducer;localStorage
-Some usefull css for beutiful element in reactjs
++ useHistory: thường đc dùng khi sử lí 1 action, nhấn nút hay gì đó tương tự giống Link
+  syntax: history.push('/')
++ Redirect(Navigate): thường đc dùng để chuyển trang khi có liên quan đến phân quyền đc phép hay ko
+
++ extraReducer: được sử dụng khi 1 actions(hàm) trong cái reducer của 1 slice có tác động đến global state của slice khác
+ Là khi mình dùng action của slice đó, sẽ gọi đến cái hàm mới ta khởi tạo và set lại global state của 1 slice khác 
+(Trong file slice của cái state cần set luôn )
+--> Nói chung là khi các globalstate ảnh hưởng nhau :))
++ localStorage: setItem and get Item, có thể kiếm tra trong phần application của inspect
++ Some usefull css for beutiful element in reactjs:
+-->MUI; React Boostrap; antd
+k@P9_M

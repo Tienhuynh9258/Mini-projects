@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import todoListSlice from '../../redux/Slices/todoListSlice';
+import {todoListActions} from '../../redux/Slices/todoListSlice';
 export default function Modal({todo}) {
   const dispatch=useDispatch()
     return (
@@ -19,7 +19,7 @@ export default function Modal({todo}) {
         </div>
         
         <div className="modal-footer">
-          <button type="button" className="btn btn-success" onClick={() => dispatch(todoListSlice.actions.deleteNote(todo.id))} data-dismiss="modal">Yes</button>
+          <button type="button" className="btn btn-success" onClick={() => dispatch(todoListActions.deleteNote(todo.id))} data-dismiss="modal">Yes</button>
           <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
         

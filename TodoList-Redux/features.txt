@@ -10,6 +10,7 @@ TodoList:
   + Delete having a modal to confirm: DONE
   + Make spinner when add notes: DONE
   + Allow to choose all notes: DONE
-  + Add the start-end date
+  + Add the start-end date: DONE
   + Notify add success
+  + Popover for avatar
   + (Bonus)-->create Account
